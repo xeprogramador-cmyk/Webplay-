@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebPlay – Baixar aplicativo Android (APK) grátis</title>
+<meta name="description" content="Baixe o aplicativo WebPlay para Android (APK): catálogo de filmes e séries, pesquisa rápida, histórico e perfil. Download direto, simples e gratuito.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#0d0f14">
+<link rel="canonical" href="https://SEU-DOMINIO.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e0a33c'/%3E%3Cpath d='M25 19l22 13-22 13z' fill='%231a1305'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WebPlay">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="WebPlay – Baixar aplicativo Android (APK)">
+<meta property="og:description" content="Catálogo de filmes e séries no seu Android. Baixe o APK direto do nosso servidor.">
+<meta property="og:url" content="https://SEU-DOMINIO.com/">
+<meta property="og:image" content="https://SEU-DOMINIO.com/assets/webplay-web.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WebPlay – Baixar aplicativo Android (APK)">
+<meta name="twitter:description" content="Catálogo de filmes e séries no seu Android. Baixe o APK direto do nosso servidor.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type":"WebSite","@id":"https://SEU-DOMINIO.com/#site","url":"https://SEU-DOMINIO.com/","name":"WebPlay","inLanguage":"pt"},
+    {"@type":"SoftwareApplication","@id":"https://SEU-DOMINIO.com/#app","name":"WebPlay","operatingSystem":"ANDROID","applicationCategory":"EntertainmentApplication","description":"Aplicativo Android com catálogo de filmes e séries, pesquisa, histórico e perfil.","downloadUrl":"https://SEU-DOMINIO.com/webplay.apk","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"O aplicativo é gratuito?","acceptedAnswer":{"@type":"Answer","text":"Sim, o download é gratuito."}},
+      {"@type":"Question","name":"Funciona em iPhone?","acceptedAnswer":{"@type":"Answer","text":"Ainda estamos em atualização para iPhone. Por agora, o aplicativo (APK) é para Android."}},
+      {"@type":"Question","name":"Por que o Android pede permissão para instalar?","acceptedAnswer":{"@type":"Answer","text":"Como o aplicativo é instalado por APK e não pela Play Store, o Android pede a sua confirmação uma vez."}}
+    ]}
+  ]
+}
+</script>
+
+<style>
+  :root{--bg:#0d0f14;--panel:#161a22;--ink:#eae6dd;--muted:#9097a5;--accent:#e0a33c;--accent2:#ffcf7a;--line:#232833}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:system-ui,'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:600;line-height:1.15}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+  /* fundo animado */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:flutuar 14s ease-in-out infinite}
+  .o1{width:380px;height:380px;background:#e0a33c;top:-120px;left:-80px}
+  .o2{width:340px;height:340px;background:#3b6cff;bottom:-120px;right:-60px;animation-delay:-5s}
+  .o3{width:240px;height:240px;background:#c04dff;top:45%;left:55%;animation-delay:-9s;opacity:.16}
+  @keyframes flutuar{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}}
+
+  /* topo + logotipo */
+  nav{display:flex;justify-content:center;padding:26px 0 0;position:relative}
+  .idioma{position:absolute;right:0;top:20px;display:flex;align-items:center;gap:6px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:6px 10px;transition:border-color .2s}
+  .idioma:hover{border-color:var(--accent)}
+  .idioma svg{width:18px;height:18px;flex:none}
+  .idioma select{background:transparent;color:var(--ink);border:0;outline:0;font:inherit;font-size:.85rem;cursor:pointer}
+  .idioma select option{background:var(--panel);color:var(--ink)}
+  @media(max-width:520px){.idioma{top:-2px}nav{padding-top:46px}}
+  .logo{display:flex;align-items:center;gap:12px;font-family:Georgia,serif;font-size:1.9rem;font-weight:700;letter-spacing:.5px}
+  .logo svg{width:44px;height:44px;flex:none;filter:drop-shadow(0 6px 14px rgba(224,163,60,.45));animation:pulsar 3.2s ease-in-out infinite}
+  .logo b{color:var(--accent);font-weight:700}
+  .logo img{height:44px;width:auto;display:none}
+  .logo.com-img img{display:block}
+  .logo.com-img svg,.logo.com-img .txt{display:none}
+  @keyframes pulsar{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 30px}
+  h1{font-size:clamp(2rem,6vw,3.3rem)}
+  h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brilho 5s linear infinite}
+  @keyframes brilho{to{background-position:200% center}}
+  .lead{color:var(--muted);margin-top:16px;max-width:520px;font-size:1.05rem}
+  .btn{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 32px;border-radius:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#1a1305;font-weight:800;text-decoration:none;font-size:1.05rem;overflow:hidden;box-shadow:0 10px 30px rgba(224,163,60,.35);transition:transform .2s,box-shadow .2s;animation:btnpulso 2.6s ease-in-out infinite}
+  .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 38px rgba(224,163,60,.5)}
+  .btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:varrer 3.4s ease-in-out infinite}
+  @keyframes varrer{0%,60%{left:-60%}100%{left:130%}}
+  @keyframes btnpulso{0%,100%{box-shadow:0 10px 30px rgba(224,163,60,.35)}50%{box-shadow:0 10px 44px rgba(224,163,60,.6)}}
+  .btn svg{width:20px;height:20px;animation:descer 1.6s ease-in-out infinite}
+  @keyframes descer{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
+  .meta{color:var(--muted);font-size:.85rem;margin-top:12px}
+
+  /* telemóvel com cards novos a aparecer */
+  .phone{justify-self:center;width:250px;height:480px;border-radius:36px;border:2px solid #2c3342;background:linear-gradient(180deg,#161a22,#0f1218);padding:16px 14px;box-shadow:0 30px 60px rgba(0,0,0,.55);animation:flutuarFone 6s ease-in-out infinite;overflow:hidden;position:relative}
+  @keyframes flutuarFone{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+  .phone .tela{display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+  .phone.com-img{padding:0}
+  .phone.com-img .tela{display:block}
+  .phone.com-img .barra,.phone.com-img .busca,.phone.com-img .cards{display:none}
+  .phone .barra{height:10px;width:80px;border-radius:6px;background:#232833;margin:0 auto 14px}
+  .phone .busca{height:30px;border-radius:15px;background:#1d222d;margin-bottom:14px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mini{aspect-ratio:2/3;border-radius:10px;opacity:0;transform:translateY(24px) scale(.9);animation:entrar .7s cubic-bezier(.2,.8,.2,1) forwards,respirar 5s ease-in-out infinite}
+  .mini:nth-child(1){background:linear-gradient(160deg,#e0a33c,#7a5a20);animation-delay:.2s,1s}
+  .mini:nth-child(2){background:linear-gradient(160deg,#3b6cff,#1b2c66);animation-delay:.5s,1.4s}
+  .mini:nth-child(3){background:linear-gradient(160deg,#c04dff,#4a1c66);animation-delay:.8s,1.8s}
+  .mini:nth-child(4){background:linear-gradient(160deg,#27d3a2,#0f5c47);animation-delay:1.1s,2.2s}
+  .mini:nth-child(5){background:linear-gradient(160deg,#ff5c7a,#5c1426);animation-delay:1.4s,2.6s}
+  .mini:nth-child(6){background:linear-gradient(160deg,#ffd166,#6b4b00);animation-delay:1.7s,3s}
+  @keyframes entrar{to{opacity:1;transform:none}}
+  @keyframes respirar{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+
+  /* secções */
+  section{margin-top:70px}
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);text-align:center;margin-bottom:10px}
+  .sub{color:var(--muted);text-align:center;max-width:540px;margin:0 auto 30px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+  .card{background:linear-gradient(180deg,var(--panel),#12151c);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,border-color .3s,box-shadow .3s}
+  .card:hover{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+  .ico{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.06);color:var(--ink);display:grid;place-items:center;margin-bottom:14px}
+  .ico svg{width:24px;height:24px}
+  .card:hover .ico{background:rgba(255,255,255,.1)}
+  .card h3{font-size:1.1rem;margin-bottom:6px;color:var(--accent2)}
+  .card p{color:var(--muted);font-size:.93rem}
+
+  .passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:p}
+  .passo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 22px 22px;counter-increment:p}
+  .passo::before{content:counter(p);position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#1a1305;font-weight:800;display:grid;place-items:center}
+  .passo p{color:var(--muted);font-size:.95rem}
+
+  details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:0 auto 12px;max-width:700px;transition:border-color .25s}
+  details[open]{border-color:var(--accent)}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:10px}
+  summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1;transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  summary::-webkit-details-marker{display:none}
+  details p{color:var(--muted);margin-top:10px;font-size:.94rem;animation:abrir .35s ease}
+  @keyframes abrir{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+  .qr-box{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;background:linear-gradient(180deg,var(--panel),#12151c);border:1px solid var(--line);border-radius:22px;padding:28px;max-width:640px;margin:0 auto}
+  .qr-img{background:#fff;padding:14px;border-radius:16px;line-height:0;transition:transform .3s}
+  .qr-img:hover{transform:scale(1.04) rotate(-1deg)}
+  .qr-img img,.qr-img canvas{width:180px;height:180px}
+  .qr-txt{max-width:280px;text-align:left}
+  .qr-txt h3{font-size:1.2rem;margin-bottom:8px}
+  .qr-txt p{color:var(--muted);font-size:.93rem;margin-bottom:12px}
+  .qr-txt button{display:inline-block;background:transparent;color:var(--ink);border:1px solid #555;border-radius:20px;padding:9px 18px;font:inherit;font-size:.85rem;cursor:pointer;transition:border-color .2s}
+  .qr-txt button:hover{border-color:var(--accent)}
+  @media(max-width:760px){.qr-txt{text-align:center}}
+  .final{text-align:center}
+  footer{margin-top:70px;padding:0 0 40px;text-align:center;color:var(--muted);font-size:.8rem}
+
+  /* aparece ao rolar */
+  .rev{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .rev.ver{opacity:1;transform:none}
+  .grid .rev:nth-child(2),.passos .rev:nth-child(2){transition-delay:.12s}
+  .grid .rev:nth-child(3),.passos .rev:nth-child(3){transition-delay:.24s}
+  .grid .rev:nth-child(4){transition-delay:.36s}
+
+  @media(max-width:760px){
+    .hero{grid-template-columns:1fr;text-align:center;padding-top:36px}
+    .lead{margin-left:auto;margin-right:auto}
+    .phone{width:210px;height:400px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    .rev,.mini{opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<div class="wrap">
+  <nav>
+    <label class="idioma" title="Idioma">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>
+      <select id="idioma" aria-label="Idioma / Language">
+        <option value="auto">Auto</option>
+        <option value="pt">Português</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </label>
+    <div class="logo" id="logo" aria-label="WebPlay">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#e0a33c"/><path d="M25 19l22 13-22 13z" fill="#1a1305"/></svg>
+      <span class="txt">Web<b>Play</b></span>
+      <img id="logoImg" alt="WebPlay">
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1 data-i18n="h1">Baixe o <span>WebPlay</span> para o seu Android</h1>
+      <p class="lead" data-i18n="lead">Catálogo de filmes e séries no seu telemóvel, com pesquisa rápida, histórico e perfil. Instalação simples, direto do nosso servidor.</p>
+      <a class="btn" id="baixar" href="webplay.apk" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+        <span data-i18n="btn">Baixar o aplicativo (APK)</span>
+      </a>
+      <p class="meta" data-i18n="meta">Para Android · Gratuito · Download direto</p>
+    </div>
+    <div class="phone" id="phone">
+      <img class="tela" id="telaImg" alt="Tela do aplicativo WebPlay"><div class="barra"></div><div class="busca"></div>
+      <div class="cards"><div class="mini"></div><div class="mini"></div><div class="mini"></div><div class="mini"></div><div class="mini"></div><div class="mini"></div></div>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="recursos">
+      <h2 id="recursos" class="rev" data-i18n="h_rec">O que o aplicativo oferece</h2>
+      <p class="sub rev" data-i18n="sub_rec">Tudo o que você precisa, num só lugar.</p>
+      <div class="grid">
+        <article class="card rev"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></div><h3 data-i18n="c1t">Catálogo completo</h3><p data-i18n="c1p">Explore filmes e séries organizados e fáceis de navegar.</p></article>
+        <article class="card rev"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3 data-i18n="c2t">Pesquisa rápida</h3><p data-i18n="c2p">Encontre títulos em segundos, com sugestões enquanto digita.</p></article>
+        <article class="card rev"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i18n="c3t">Histórico</h3><p data-i18n="c3p">Volte aos títulos que já abriu neste aparelho.</p></article>
+        <article class="card rev"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><h3 data-i18n="c4t">Perfil e personalização</h3><p data-i18n="c4p">Entre com a sua conta e ajuste o visual do aplicativo.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="instalar">
+      <h2 id="instalar" class="rev" data-i18n="h_inst">Como instalar</h2>
+      <p class="sub rev" data-i18n="sub_inst">Três passos e está pronto.</p>
+      <div class="passos">
+        <div class="passo rev"><p data-i18n="p1">Toque em <strong>Baixar o aplicativo (APK)</strong>.</p></div>
+        <div class="passo rev"><p data-i18n="p2">Abra o arquivo baixado e, se o Android pedir, permita a instalação de fontes desconhecidas.</p></div>
+        <div class="passo rev"><p data-i18n="p3">Toque em <strong>Instalar</strong> e abra o WebPlay.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq" class="rev" data-i18n="h_faq">Perguntas frequentes</h2>
+      <p class="sub rev" data-i18n="sub_faq">Respostas rápidas.</p>
+      <details class="rev"><summary data-i18n="q1">O aplicativo é gratuito?</summary><p data-i18n="a1">Sim, o download é gratuito.</p></details>
+      <details class="rev"><summary data-i18n="q2">Funciona em iPhone?</summary><p data-i18n="a2">Ainda estamos em atualização para iPhone. Por agora, o aplicativo (APK) é para Android.</p></details>
+      <details class="rev"><summary data-i18n="q3">Por que o Android pede permissão para instalar?</summary><p data-i18n="a3">Como o aplicativo é instalado por APK e não pela Play Store, o Android pede a sua confirmação uma vez.</p></details>
+    </section>
+
+    <section aria-labelledby="qr" id="secQr" hidden>
+      <h2 id="qr" class="rev" data-i18n="h_qr">Leve para o telemóvel</h2>
+      <p class="sub rev" data-i18n="sub_qr">Está no computador? Aponte a câmera e baixe no Android.</p>
+      <div class="qr-box rev">
+        <div class="qr-img" id="qrImg" role="img" aria-label="Código QR para abrir esta página"></div>
+        <div class="qr-txt">
+          <h3 data-i18n="qr_t">Partilhe com um amigo</h3>
+          <p data-i18n="qr_p">Ele aponta a câmera do telemóvel para o código e abre esta página para baixar o aplicativo.</p>
+          <button type="button" id="qrPartilhar" data-i18n="qr_btn">Partilhar o código QR</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="final rev" aria-label="Baixar agora">
+      <h2 data-i18n="h_final">Pronto para começar?</h2>
+      <a class="btn" href="webplay.apk" download data-i18n="btn2">Baixar agora</a>
+    </section>
+  </main>
+
+  <footer><p data-i18n="foot">© WebPlay. Todos os direitos reservados.</p></footer>
+</div>
+
+<script>
+// Aparecer ao rolar
+(function(){
+  var els=document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('ver')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('ver');io.unobserve(x.target);}})},{threshold:.15});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+// Imagem do telefone: aceita QUALQUER imagem (qualquer nome), nas pastas assets/, img/, imagens/, images/ ou raiz.
+// 1) lê a listagem da pasta e usa a primeira imagem que não seja o logotipo; 2) se a pasta não puder ser listada, tenta imagens.json (["foto.png"]); 3) por fim tenta nomes comuns.
+(function(){
+  var img=document.getElementById('telaImg'), ph=document.getElementById('phone');
+  var EXT=/\.(png|jpe?g|webp|gif|avif|bmp|svg)(\?.*)?$/i, LOGO=/^webplay-(web|azul)\./i;
+  var dirs=['assets/','img/','imagens/','images/',''], fila=[], i=0, ok=false;
+  img.onload=function(){ok=true;ph.classList.add('com-img');};
+  img.onerror=function(){i++; if(i<fila.length) img.src=fila[i];};
+  function tentar(lista){ if(ok||!lista.length) return; fila=lista; i=0; img.src=fila[0]; }
+  function nomeOk(n){ n=n.split('/').pop(); return EXT.test(n) && !LOGO.test(n); }
+  function listar(d){
+    return fetch(d||'./',{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){
+      var out=[], re=/href=["']([^"'#?]+)["']/gi, m;
+      while((m=re.exec(t))){ var h=decodeURIComponent(m[1]); if(nomeOk(h)) out.push(d+h.split('/').pop()); }
+      return out;
+    }).catch(function(){return []});
+  }
+  function json(){
+    return fetch('imagens.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(a){
+      return (a||[]).filter(nomeOk).map(function(n){return /\//.test(n)?n:'assets/'+n});
+    }).catch(function(){return []});
+  }
+  function comuns(){
+    var l=[]; ['assets/',''].forEach(function(d){['telefone','tela','imagen','imagem','image','foto'].forEach(function(n){['png','jpg','jpeg','webp'].forEach(function(e){l.push(d+n+'.'+e)})})}); return l;
+  }
+  function php(){
+    return fetch('listar.php',{cache:'no-store'}).then(function(r){return r.ok?r.json():[]}).then(function(a){
+      return Array.isArray(a)?a.filter(nomeOk):[];
+    }).catch(function(){return []});
+  }
+  php().then(function(l){ if(l.length) return tentar(l);
+  return Promise.all(dirs.map(listar)).then(function(r){
+    var todas=[].concat.apply([],r);
+    if(todas.length) return tentar(todas);
+    return json().then(function(j){ if(j.length) tentar(j); else tentar(comuns()); });
+  });
+  });
+})();
+
+// Logotipo: tenta achar a imagem em várias pastas; se não achar, fica o logotipo em SVG/texto (nunca fica vazio)
+(function(){
+  var dirs=['assets/','','img/','imagens/','images/'], nomes=['webplay-web.png','webplay-azul.png'], lista=[];
+  dirs.forEach(function(d){nomes.forEach(function(n){lista.push(d+n)})});
+  var img=document.getElementById('logoImg'), logo=document.getElementById('logo'), i=0;
+  img.onload=function(){logo.classList.add('com-img');};
+  img.onerror=function(){i++; if(i<lista.length) img.src=lista[i];};
+  img.src=lista[0];
+})();
+</script>
+<script>
+// Idioma: automático (idioma do navegador) ou escolhido pela pessoa. Para acrescentar outro idioma, copie um bloco e traduza.
+(function(){
+  var T={
+  pt:{title:"WebPlay – Baixar aplicativo Android (APK) grátis",desc:"Baixe o aplicativo WebPlay para Android (APK): catálogo de filmes e séries, pesquisa rápida, histórico e perfil. Download direto, simples e gratuito.",
+    h1:'Baixe o <span>WebPlay</span> para o seu Android',lead:"Catálogo de filmes e séries no seu telemóvel, com pesquisa rápida, histórico e perfil. Instalação simples, direto do nosso servidor.",
+    btn:"Baixar o aplicativo (APK)",meta:"Para Android · Gratuito · Download direto",h_rec:"O que o aplicativo oferece",sub_rec:"Tudo o que você precisa, num só lugar.",
+    c1t:"Catálogo completo",c1p:"Explore filmes e séries organizados e fáceis de navegar.",c2t:"Pesquisa rápida",c2p:"Encontre títulos em segundos, com sugestões enquanto digita.",
+    c3t:"Histórico",c3p:"Volte aos títulos que já abriu neste aparelho.",c4t:"Perfil e personalização",c4p:"Entre com a sua conta e ajuste o visual do aplicativo.",
+    h_inst:"Como instalar",sub_inst:"Três passos e está pronto.",p1:"Toque em <strong>Baixar o aplicativo (APK)</strong>.",p2:"Abra o arquivo baixado e, se o Android pedir, permita a instalação de fontes desconhecidas.",p3:"Toque em <strong>Instalar</strong> e abra o WebPlay.",
+    h_faq:"Perguntas frequentes",sub_faq:"Respostas rápidas.",q1:"O aplicativo é gratuito?",a1:"Sim, o download é gratuito.",q2:"Funciona em iPhone?",a2:"Ainda estamos em atualização para iPhone. Por agora, o aplicativo (APK) é para Android.",
+    q3:"Por que o Android pede permissão para instalar?",a3:"Como o aplicativo é instalado por APK e não pela Play Store, o Android pede a sua confirmação uma vez.",
+    h_qr:"Leve para o telemóvel",sub_qr:"Está no computador? Aponte a câmera e baixe no Android.",qr_t:"Partilhe com um amigo",qr_p:"Ele aponta a câmera do telemóvel para o código e abre esta página para baixar o aplicativo.",qr_btn:"Partilhar o código QR",
+    h_final:"Pronto para começar?",btn2:"Baixar agora",foot:"© WebPlay. Todos os direitos reservados.",copiado:"Link copiado!",share:"Baixe o aplicativo WebPlay para Android:"},
+  en:{title:"WebPlay – Free Android app download (APK)",desc:"Download the WebPlay app for Android (APK): movie and series catalog, fast search, history and profile. Direct, simple and free download.",
+    h1:'Download <span>WebPlay</span> for your Android',lead:"A catalog of movies and series on your phone, with fast search, history and profile. Simple install, straight from our server.",
+    btn:"Download the app (APK)",meta:"For Android · Free · Direct download",h_rec:"What the app offers",sub_rec:"Everything you need, in one place.",
+    c1t:"Full catalog",c1p:"Browse movies and series that are organized and easy to navigate.",c2t:"Fast search",c2p:"Find titles in seconds, with suggestions as you type.",
+    c3t:"History",c3p:"Go back to the titles you already opened on this device.",c4t:"Profile and customization",c4p:"Sign in with your account and adjust the look of the app.",
+    h_inst:"How to install",sub_inst:"Three steps and you're done.",p1:"Tap <strong>Download the app (APK)</strong>.",p2:"Open the downloaded file and, if Android asks, allow installation from unknown sources.",p3:"Tap <strong>Install</strong> and open WebPlay.",
+    h_faq:"Frequently asked questions",sub_faq:"Quick answers.",q1:"Is the app free?",a1:"Yes, the download is free.",q2:"Does it work on iPhone?",a2:"We are still updating for iPhone. For now, the app (APK) is for Android.",
+    q3:"Why does Android ask for permission to install?",a3:"Because the app is installed by APK and not from the Play Store, Android asks for your confirmation once.",
+    h_qr:"Take it to your phone",sub_qr:"On a computer? Point your camera and download on Android.",qr_t:"Share with a friend",qr_p:"They point their phone camera at the code and open this page to download the app.",qr_btn:"Share the QR code",
+    h_final:"Ready to start?",btn2:"Download now",foot:"© WebPlay. All rights reserved.",copiado:"Link copied!",share:"Download the WebPlay app for Android:"},
+  es:{title:"WebPlay – Descargar app para Android (APK) gratis",desc:"Descarga la aplicación WebPlay para Android (APK): catálogo de películas y series, búsqueda rápida, historial y perfil. Descarga directa, sencilla y gratuita.",
+    h1:'Descarga <span>WebPlay</span> para tu Android',lead:"Catálogo de películas y series en tu móvil, con búsqueda rápida, historial y perfil. Instalación sencilla, directo desde nuestro servidor.",
+    btn:"Descargar la aplicación (APK)",meta:"Para Android · Gratis · Descarga directa",h_rec:"Qué ofrece la aplicación",sub_rec:"Todo lo que necesitas, en un solo lugar.",
+    c1t:"Catálogo completo",c1p:"Explora películas y series organizadas y fáciles de navegar.",c2t:"Búsqueda rápida",c2p:"Encuentra títulos en segundos, con sugerencias mientras escribes.",
+    c3t:"Historial",c3p:"Vuelve a los títulos que ya abriste en este dispositivo.",c4t:"Perfil y personalización",c4p:"Inicia sesión con tu cuenta y ajusta el aspecto de la aplicación.",
+    h_inst:"Cómo instalar",sub_inst:"Tres pasos y listo.",p1:"Toca <strong>Descargar la aplicación (APK)</strong>.",p2:"Abre el archivo descargado y, si Android lo pide, permite la instalación de fuentes desconocidas.",p3:"Toca <strong>Instalar</strong> y abre WebPlay.",
+    h_faq:"Preguntas frecuentes",sub_faq:"Respuestas rápidas.",q1:"¿La aplicación es gratuita?",a1:"Sí, la descarga es gratuita.",q2:"¿Funciona en iPhone?",a2:"Todavía estamos actualizando para iPhone. Por ahora, la aplicación (APK) es para Android.",
+    q3:"¿Por qué Android pide permiso para instalar?",a3:"Como la aplicación se instala por APK y no desde Play Store, Android pide tu confirmación una vez.",
+    h_qr:"Llévala a tu móvil",sub_qr:"¿Estás en el ordenador? Apunta la cámara y descarga en Android.",qr_t:"Comparte con un amigo",qr_p:"Apunta la cámara del móvil al código y abre esta página para descargar la aplicación.",qr_btn:"Compartir el código QR",
+    h_final:"¿Listo para empezar?",btn2:"Descargar ahora",foot:"© WebPlay. Todos los derechos reservados.",copiado:"¡Enlace copiado!",share:"Descarga la aplicación WebPlay para Android:"},
+  fr:{title:"WebPlay – Télécharger l'application Android (APK) gratuitement",desc:"Téléchargez l'application WebPlay pour Android (APK) : catalogue de films et séries, recherche rapide, historique et profil. Téléchargement direct, simple et gratuit.",
+    h1:'Téléchargez <span>WebPlay</span> pour votre Android',lead:"Un catalogue de films et séries sur votre téléphone, avec recherche rapide, historique et profil. Installation simple, directement depuis notre serveur.",
+    btn:"Télécharger l'application (APK)",meta:"Pour Android · Gratuit · Téléchargement direct",h_rec:"Ce que l'application offre",sub_rec:"Tout ce dont vous avez besoin, au même endroit.",
+    c1t:"Catalogue complet",c1p:"Parcourez des films et séries bien organisés et faciles à explorer.",c2t:"Recherche rapide",c2p:"Trouvez des titres en quelques secondes, avec des suggestions pendant la saisie.",
+    c3t:"Historique",c3p:"Retrouvez les titres que vous avez déjà ouverts sur cet appareil.",c4t:"Profil et personnalisation",c4p:"Connectez-vous avec votre compte et personnalisez l'apparence de l'application.",
+    h_inst:"Comment installer",sub_inst:"Trois étapes et c'est prêt.",p1:"Touchez <strong>Télécharger l'application (APK)</strong>.",p2:"Ouvrez le fichier téléchargé et, si Android le demande, autorisez l'installation depuis des sources inconnues.",p3:"Touchez <strong>Installer</strong> et ouvrez WebPlay.",
+    h_faq:"Questions fréquentes",sub_faq:"Réponses rapides.",q1:"L'application est-elle gratuite ?",a1:"Oui, le téléchargement est gratuit.",q2:"Fonctionne-t-elle sur iPhone ?",a2:"Nous sommes encore en cours de mise à jour pour iPhone. Pour l'instant, l'application (APK) est pour Android.",
+    q3:"Pourquoi Android demande-t-il une autorisation pour installer ?",a3:"L'application s'installe par APK et non depuis le Play Store ; Android demande donc votre confirmation une fois.",
+    h_qr:"Emportez-la sur votre téléphone",sub_qr:"Sur ordinateur ? Pointez l'appareil photo et téléchargez sur Android.",qr_t:"Partagez avec un ami",qr_p:"Il pointe l'appareil photo de son téléphone vers le code et ouvre cette page pour télécharger l'application.",qr_btn:"Partager le code QR",
+    h_final:"Prêt à commencer ?",btn2:"Télécharger maintenant",foot:"© WebPlay. Tous droits réservés.",copiado:"Lien copié !",share:"Téléchargez l'application WebPlay pour Android :"}
+  };
+  var sel=document.getElementById("idioma"), LS="webplay_idioma";
+  function auto(){ var l=((navigator.languages&&navigator.languages[0])||navigator.language||"pt").slice(0,2).toLowerCase(); return T[l]?l:"en"; }
+  function aplicar(esc){
+    var l=esc==="auto"?auto():esc; if(!T[l]) l="pt"; var d=T[l];
+    document.documentElement.lang=l;
+    document.querySelectorAll("[data-i18n]").forEach(function(e){ var v=d[e.getAttribute("data-i18n")]; if(v!=null) e.innerHTML=v; });
+    document.title=d.title;
+    [["meta[name=description]",d.desc],["meta[property='og:title']",d.title],["meta[property='og:description']",d.desc],["meta[name='twitter:title']",d.title],["meta[name='twitter:description']",d.desc]].forEach(function(x){ var m=document.querySelector(x[0]); if(m) m.setAttribute("content",x[1]); });
+    window.WP_TXT=d;
+  }
+  var esc="auto"; try{ esc=localStorage.getItem(LS)||"auto"; }catch(e){}
+  sel.value=esc; aplicar(esc);
+  sel.addEventListener("change",function(){ try{ localStorage.setItem(LS,sel.value); }catch(e){} aplicar(sel.value); });
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+// Código QR: gerado no navegador com o endereço desta própria página (funciona em qualquer domínio)
+(function(){
+  if(typeof QRCode==="undefined") return;           // sem a biblioteca: a secção continua escondida
+  var box=document.getElementById("qrImg"), sec=document.getElementById("secQr");
+  var url=location.origin+location.pathname.replace(/index\.html$/,"");
+  try{ new QRCode(box,{text:url,width:360,height:360,colorDark:"#0d0f14",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M}); }catch(e){ return; }
+  sec.hidden=false;
+  var btn=document.getElementById("qrPartilhar"), txt="";
+  btn.addEventListener("click",function(){
+    var c=box.querySelector("canvas"), D=window.WP_TXT||{}; txt=D.share||"WebPlay:";
+    function soLink(){
+      if(navigator.share){ navigator.share({title:"WebPlay",text:txt,url:url}).catch(function(){}); return; }
+      try{ navigator.clipboard.writeText(url).then(function(){ btn.textContent=D.copiado||"OK"; setTimeout(function(){btn.textContent=D.qr_btn||"QR";},2200); }); }catch(e){ prompt("Copie o link:",url); }
+    }
+    if(c && c.toBlob && navigator.canShare){
+      c.toBlob(function(blob){
+        if(!blob) return soLink();
+        var f=new File([blob],"webplay-qrcode.png",{type:"image/png"});
+        if(navigator.canShare({files:[f]})) navigator.share({files:[f],title:"WebPlay",text:txt+" "+url}).catch(function(){});
+        else soLink();
+      },"image/png");
+    } else soLink();
+  });
+})();
+</script>
+</body>
+</html>
