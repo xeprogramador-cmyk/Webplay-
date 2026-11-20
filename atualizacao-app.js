@@ -1,13 +1,64 @@
-/* Aviso de atualização do aplicativo (Median).
-   Lê a versão REAL instalada no aparelho (median.deviceInfo) e compara com atualizacao.json.
+/* Aviso de atualização do aplicativo (WebPlay / Median).
+   Lê a versão REAL instalada no aparelho (WebPlayBridge.versao ou median.deviceInfo) e compara com
+   o nó Firebase "atualizacao" (projeto feed). Se o Firebase falhar, usa
+   atualizacao.json como reserva.
    - Só aparece dentro do app (não no navegador).
-   - Só some quando o app instalado tiver a versão pedida. Tocar em "Atualizar" não apaga o aviso.
-   - Depois de atualizar de verdade, não volta a aparecer. */
+   - Só some quando o app instalado tiver a versão pedida.
+   - Tocar em "Atualizar" sem instalar NÃO apaga o aviso. */
 (function(){
-  var SESSAO = "webplay_upd_depois";   // "Agora não": esconde só até fechar o app
+  // O site carrega atualizacao-app.js e atualizacao.js (mesmo código): só o primeiro a chegar corre.
+  if(window.__wpAtualizacaoApp) return; window.__wpAtualizacaoApp = true;
+  var SESSAO = "webplay_upd_depois";
+  // APK no último Release do GitHub (o link não muda: basta publicar um release novo com o ficheiro app.apk). Para outro endereço, põe o campo "apk" no nó "atualizacao".
+  var APK_PADRAO = "https://github.com/xeprogramador-cmyk/Webplay-/releases/latest/download/app.apk";
+
+  function urlApk(c){
+    try { return new URL(c.apk || APK_PADRAO, location.href).href; } catch(e){ return APK_PADRAO; }
+  }
+  // Baixa o APK: app novo → DownloadManager do Android (ícone de download + instalador); app antigo → download pelo WebView.
+  function baixarApp(c){
+    try {
+      if(window.WebPlayBridge && typeof WebPlayBridge.baixarApk === "function"){ WebPlayBridge.baixarApk(urlApk(c)); return; }
+    } catch(e){}
+    iniciarDownload(urlApk(c));
+  }
+  // Abre o link principal (ADM Play) no Chrome, fora do app.
+  function abrirNaWeb(c){
+    try {
+      if(window.WebPlayBridge && typeof WebPlayBridge.abrirNavegador === "function"){ WebPlayBridge.abrirNavegador(c.link); return; }
+    } catch(e){}
+    try { window.open(c.link, "_blank", "noopener"); } catch(e){ location.href = c.link; }
+  }
+  function escolherModo(c, atual){
+    var velha = document.getElementById("wpUpdEsc"); if(velha) velha.remove();
+    if(!document.getElementById("wpUpdEscCss")){
+      var css = document.createElement("style"); css.id = "wpUpdEscCss";
+      css.textContent =
+        "#wpUpdEsc{position:fixed;inset:0;z-index:2147483647;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;padding:24px;font-family:system-ui,sans-serif;color:#eae6dd;text-align:center}" +
+        "#wpUpdEsc .cx{max-width:380px;width:100%;background:#161a22;border:1px solid #2a303c;border-radius:18px;padding:22px}" +
+        "#wpUpdEsc h3{margin:0 0 6px;font-size:1.15rem}" +
+        "#wpUpdEsc p{margin:0 0 16px;font-size:.88rem;line-height:1.4;color:#9097a5}" +
+        "#wpUpdEsc button{display:block;width:100%;border:0;border-radius:14px;padding:13px;margin:8px 0 0;font-weight:bold;font-size:.95rem;cursor:pointer}" +
+        "#wpUpdEsc .p{background:#e0a33c;color:#1a1305}#wpUpdEsc .s{background:#232833;color:#eae6dd}#wpUpdEsc .x{background:transparent;color:#9097a5;font-weight:normal}";
+      document.head.appendChild(css);
+    }
+    var e = document.createElement("div"); e.id = "wpUpdEsc";
+    var cx = document.createElement("div"); cx.className = "cx";
+    var h = document.createElement("h3"); h.textContent = "Como queres atualizar?";
+    var p = document.createElement("p"); p.textContent = "Versão nova: " + c.versao;
+    var b1 = document.createElement("button"); b1.className = "p"; b1.textContent = "Atualizar no aplicativo";
+    b1.addEventListener("click", function(){ e.remove(); telaAtualizando(c, atual); });
+    var b2 = document.createElement("button"); b2.className = "s"; b2.textContent = "Atualizar pela web (Chrome)";
+    b2.addEventListener("click", function(){ e.remove(); abrirNaWeb(c); });
+    cx.appendChild(h); cx.appendChild(p); cx.appendChild(b1); cx.appendChild(b2);
+    var b3 = document.createElement("button"); b3.className = "x"; b3.textContent = "Voltar";
+    b3.addEventListener("click", function(){ e.remove(); });
+    cx.appendChild(b3);
+    e.appendChild(cx); document.body.appendChild(e);
+  }
 
   function partes(v){ return String(v||"0").split(/[^0-9]+/).filter(Boolean).map(Number); }
-  function menor(a, b){                 // a < b ? (ex.: 1.0.0 < 1.0.1)
+  function menor(a, b){
     a = partes(a); b = partes(b);
     for(var i = 0; i < Math.max(a.length, b.length); i++){
       var x = a[i] || 0, y = b[i] || 0;
@@ -16,49 +67,74 @@
     return false;
   }
 
-  function infoApp(cb){                 // espera o bridge do Median ficar pronto (até ~5 s)
+  function infoApp(cb){
+    // App nativo (WebPlay): a versão vem da ponte WebPlayBridge.versao()
+    try {
+      if(window.WebPlayBridge && typeof WebPlayBridge.versao === "function"){
+        var v = WebPlayBridge.versao();
+        if(v){ cb({ appVersion: String(v) }); return; }
+      } else if(window.WebPlayBridge){
+        // App WebPlay ANTIGO (anterior à 2.0.64): tem a ponte mas não sabe dizer a versão.
+        // Conta como versão antiga, por isso recebe o aviso e passa a funcionar após instalar a nova.
+        cb({ appVersion: "0.0.0" }); return;
+      }
+    } catch(e){}
     var tent = 0;
     (function tentar(){
       if(window.median && typeof median.deviceInfo === "function"){
         try {
           var r = median.deviceInfo();
-          if(r && r.then){ r.then(cb, function(){}); } else { cb(r); }
-        } catch(e){}
+          if(r && r.then){ r.then(function(info){ cb(info || null); }, function(){ cb(null); }); }
+          else { cb(r || null); }
+        } catch(e){ cb(null); }
         return;
       }
-      if(++tent < 25) setTimeout(tentar, 200);
+      // até ~10 s — o bridge do Median às vezes demora a aparecer
+      if(++tent < 50) setTimeout(tentar, 200);
+      else cb(null);
     })();
   }
 
-  // Lê a configuração: primeiro do Firebase do feed (nó "atualizacao", gravado pelo ADM Play);
-  // se não houver, usa o ficheiro atualizacao.json como reserva.
+  function dbFeedPronto(){
+    try {
+      if(typeof firebase === "undefined") return null;
+      return firebase.app("feed").database();
+    } catch(e){ return null; }
+  }
+
   function lerConfig(cb){
     var feito = false;
     function usarJson(){
       fetch("atualizacao.json?_=" + Date.now(), { cache: "no-store" })
-        .then(function(r){ return r.json(); }).then(cb).catch(function(){});
+        .then(function(r){ return r.json(); }).then(function(c){ if(!feito){ feito = true; cb(c); } })
+        .catch(function(){ if(!feito){ feito = true; cb(null); } });
     }
-    try {
-      var t = setTimeout(function(){ if(!feito){ feito = true; usarJson(); } }, 6000);
-      firebase.app("feed").database().ref("atualizacao").once("value").then(function(snap){
+    function tentarFirebase(tentativa){
+      var db = dbFeedPronto();
+      if(!db){
+        if((tentativa || 0) < 15) return setTimeout(function(){ tentarFirebase((tentativa || 0) + 1); }, 400);
+        return usarJson();
+      }
+      var t = setTimeout(function(){ if(!feito){ feito = true; usarJson(); } }, 8000);
+      db.ref("atualizacao").once("value").then(function(snap){
         if(feito) return; feito = true; clearTimeout(t);
         var c = snap.val();
         if(c) cb(c); else usarJson();
       }, function(){ if(feito) return; feito = true; clearTimeout(t); usarJson(); });
-    } catch(e){ usarJson(); }
+    }
+    try { tentarFirebase(0); } catch(e){ usarJson(); }
   }
 
   infoApp(function(info){
-    if(!info || !info.appVersion) return;           // fora do app: não mostra nada
+    if(!info || !info.appVersion) return;
     lerConfig(function(c){
       if(!c || !c.ativo || !c.versao || !c.link) return;
-      if(!menor(info.appVersion, c.versao)) return;   // já tem esta versão (ou mais nova)
+      if(!menor(info.appVersion, c.versao)) return;
       try { if(!c.obrigatoria && sessionStorage.getItem(SESSAO) === String(c.versao)) return; } catch(e){}
       mostrar(c, info.appVersion);
     });
   });
 
-  // Tela "Atualizando para a versão X": abre ao tocar em Atualizar e começa o download sozinha.
   function iniciarDownload(link){
     try {
       var d = document.createElement("a");
@@ -96,10 +172,10 @@
       '<p class="atual"></p><div class="bar"><i></i></div><p class="st">Baixando a atualização…</p>' +
       '<div class="ac"></div></div>';
     t.querySelector(".v").textContent = c.versao;
-    t.querySelector(".atual").textContent = "Sua versão: " + atual;
+    t.querySelector(".atual").textContent = atual === "0.0.0" ? "Versão antiga instalada" : "Sua versão: " + atual;
     var ac = t.querySelector(".ac");
     var again = document.createElement("button"); again.className = "p"; again.textContent = "Baixar novamente";
-    again.addEventListener("click", function(){ iniciarDownload(c.link); });
+    again.addEventListener("click", function(){ baixarApp(c); });
     ac.appendChild(again);
     if(!c.obrigatoria){
       var fechar = document.createElement("button"); fechar.className = "s"; fechar.textContent = "Fechar";
@@ -107,11 +183,11 @@
       ac.appendChild(fechar);
     }
     document.body.appendChild(t);
-    iniciarDownload(c.link);   // começa sozinho
+    baixarApp(c);
     setTimeout(function(){
       var b = t.querySelector(".bar"); if(b) b.className = "bar ok";
       var st = t.querySelector(".st");
-      if(st) st.textContent = "Download iniciado. Quando terminar, abra o arquivo baixado e toque em Instalar.";
+      if(st) st.textContent = "Quando o download terminar, o instalador abre sozinho: toca em Instalar.";
     }, 3500);
   }
 
@@ -137,10 +213,10 @@
     var t = document.createElement("b"); t.textContent = "Atualize o aplicativo";
     var p = document.createElement("p");
     p.textContent = (c.mensagem || "Há uma nova versão do aplicativo disponível.") +
-                    " (Sua versão: " + atual + " → nova: " + c.versao + ")";
+                    (atual === "0.0.0" ? " (Nova versão: " + c.versao + ")" : " (Sua versão: " + atual + " → nova: " + c.versao + ")");
     var a = document.createElement("a"); a.className = "btn"; a.textContent = "Atualizar";
     a.href = c.link; a.rel = "noopener";
-    a.addEventListener("click", function(e){ e.preventDefault(); telaAtualizando(c, atual); });
+    a.addEventListener("click", function(e){ e.preventDefault(); escolherModo(c, atual); });
     cx.appendChild(t); cx.appendChild(p); cx.appendChild(a);
     if(!c.obrigatoria){
       var b = document.createElement("button"); b.textContent = "Agora não";
